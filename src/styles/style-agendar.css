@@ -1,0 +1,159 @@
+.agendar {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 140px 20px 80px;
+}
+.agendar-titulo {
+  text-align: center;
+  font-size: clamp(32px, 5vw, 46px);
+  font-weight: 800;
+  color: #2d7a5f;
+  margin-bottom: 10px;
+}
+.agendar-intro {
+  text-align: center;
+  color: #555;
+  margin-bottom: 34px;
+  font-size: 18px;
+}
+.agendar-form { display: flex; flex-direction: column; gap: 22px; }
+.agendar-paso {
+  background: #fffaf3;
+  border-radius: 22px;
+  padding: 26px 28px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+.agendar-paso h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 21px;
+  margin-bottom: 18px;
+  color: #1f3d31;
+}
+.agendar-paso h2 span {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #2d7a5f; color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800;
+}
+.agendar-nota { margin-top: 12px; color: #666; font-size: 15px; }
+
+.agendar-servicios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.agendar-servicio {
+  display: flex; flex-direction: column; gap: 6px; text-align: left;
+  padding: 16px 18px; border-radius: 16px; cursor: pointer; font: inherit;
+  background: #fff; color: #222; border: 2px solid #e1ddd3; transition: 0.2s;
+}
+.agendar-servicio strong { font-size: 18px; }
+.agendar-servicio small { color: #666; font-size: 14px; line-height: 1.35; }
+.agendar-servicio em { font-style: normal; font-weight: 700; color: #2d7a5f; font-size: 14px; margin-top: auto; }
+.agendar-servicio:hover { border-color: #2d7a5f; }
+.agendar-servicio.activa { border-color: #2d7a5f; background: #e8f3ed; box-shadow: 0 0 0 3px rgba(45, 122, 95, 0.18); }
+
+.agendar-dias { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 10px; scrollbar-width: thin; }
+.agendar-dia {
+  flex: 0 0 auto; padding: 11px 16px; border-radius: 14px; cursor: pointer; font: inherit; font-weight: 700;
+  background: #fff; color: #222; border: 2px solid #e1ddd3; text-transform: capitalize; transition: 0.2s;
+}
+.agendar-dia:hover { border-color: #2d7a5f; }
+.agendar-dia.activa { background: #2d7a5f; border-color: #2d7a5f; color: #fff; }
+
+.agendar-horas { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.agendar-hora {
+  padding: 11px 8px; border-radius: 12px; cursor: pointer; font: inherit; font-weight: 700;
+  background: #fff; color: #222; border: 2px solid #e1ddd3; transition: 0.2s;
+}
+.agendar-hora:hover { border-color: #2d7a5f; }
+.agendar-hora.activa { background: #2d7a5f; border-color: #2d7a5f; color: #fff; }
+
+.agendar-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.agendar-campos label { display: flex; flex-direction: column; gap: 6px; font-weight: 700; font-size: 15px; }
+.agendar-campos input, .agendar-campos select, .agendar-campos textarea {
+  width: 100%; border: 2px solid transparent; outline: none; background: #e6ebe3; color: #222;
+  border-radius: 10px; padding: 13px; font: inherit; font-size: 16px; font-weight: 400;
+}
+.agendar-campos input:focus, .agendar-campos select:focus, .agendar-campos textarea:focus { border-color: #2d7a5f; background: #fff; }
+.agendar-ancho { grid-column: 1 / -1; }
+.agendar-trampa { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.agendar-error {
+  background: #fdecea; color: #a12622; border-radius: 12px; padding: 14px 18px; font-weight: 700;
+}
+.agendar-enviar {
+  align-self: center; padding: 16px 48px; border: none; border-radius: 40px; cursor: pointer;
+  background: #25d366; color: #fff; font: inherit; font-size: 18px; font-weight: 800;
+  box-shadow: 0 10px 22px rgba(37, 211, 102, 0.3); transition: 0.25s;
+}
+.agendar-enviar:hover:not(:disabled) { background: #1fb457; transform: translateY(-2px); }
+.agendar-enviar:disabled { opacity: 0.6; cursor: wait; }
+
+.agendar-exito {
+  background: #fffaf3; border-radius: 26px; padding: 44px 30px; text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.agendar-exito > i { font-size: 64px; color: #25d366; }
+.agendar-exito h2 { font-size: 32px; color: #2d7a5f; }
+.agendar-exito p { max-width: 520px; line-height: 1.6; }
+.agendar-resumen { list-style: none; padding: 0; text-align: left; line-height: 2; text-transform: none; }
+.agendar-btn-wsp {
+  display: inline-flex; align-items: center; gap: 10px; padding: 15px 34px; border-radius: 40px;
+  background: #25d366; color: #fff; font-weight: 800; text-decoration: none; font-size: 18px; margin-top: 6px;
+}
+.agendar-volver { color: #2d7a5f; font-weight: 700; }
+
+body.dark-mode .agendar-intro, body.dark-mode .agendar-nota, body.dark-mode .agendar-servicio small { color: #b9c4bd; }
+body.dark-mode .agendar-paso, body.dark-mode .agendar-exito { background: #1f2b24; color: #f5f0e8; }
+body.dark-mode .agendar-paso h2 { color: #f5f0e8; }
+body.dark-mode .agendar-servicio, body.dark-mode .agendar-dia, body.dark-mode .agendar-hora { background: #16211b; color: #f5f0e8; border-color: #34463c; }
+body.dark-mode .agendar-servicio.activa { background: #1d3a2d; border-color: #4cc38a; }
+body.dark-mode .agendar-dia.activa, body.dark-mode .agendar-hora.activa { background: #2d7a5f; border-color: #4cc38a; color: #fff; }
+body.dark-mode .agendar-campos input, body.dark-mode .agendar-campos select, body.dark-mode .agendar-campos textarea { background: #16211b; color: #f5f0e8; }
+body.dark-mode .agendar-campos input:focus, body.dark-mode .agendar-campos select:focus, body.dark-mode .agendar-campos textarea:focus { border-color: #4cc38a; }
+body.dark-mode .agendar-error { background: #3a1f1d; color: #ffb4ae; }
+body.dark-mode .agendar-volver { color: #7be3a2; }
+
+@media (max-width: 720px) {
+  .agendar { padding-top: 120px; }
+  .agendar-paso { padding: 20px 18px; }
+  .agendar-servicios, .agendar-campos { grid-template-columns: 1fr; }
+}
+
+.agendar-cantidad { display: flex; flex-wrap: wrap; gap: 12px; }
+.agendar-num {
+  width: 56px; height: 56px; border-radius: 50%; cursor: pointer; font: inherit; font-size: 22px; font-weight: 800;
+  background: #fff; color: #222; border: 2px solid #e1ddd3; transition: 0.2s;
+}
+.agendar-num:hover { border-color: #2d7a5f; }
+.agendar-num.activa { background: #2d7a5f; border-color: #2d7a5f; color: #fff; }
+.agendar-nota a { color: #2d7a5f; font-weight: 700; }
+.agendar-mascotas { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+.agendar-mascota { background: #fff; border: 2px solid #e1ddd3; border-radius: 18px; padding: 18px 20px; }
+.agendar-mascota h3 { display: flex; align-items: center; gap: 8px; font-size: 17px; color: #2d7a5f; margin-bottom: 14px; }
+.agendar-campos-3 { grid-template-columns: 1fr 1fr 1.3fr; }
+.agendar-tiempo { margin-top: 18px; font-size: 16px; color: #1f3d31; }
+.agendar-tiempo i { margin-right: 6px; color: #2d7a5f; }
+
+body.dark-mode .agendar-num { background: #16211b; color: #f5f0e8; border-color: #34463c; }
+body.dark-mode .agendar-num.activa { background: #2d7a5f; border-color: #4cc38a; color: #fff; }
+body.dark-mode .agendar-mascota { background: #16211b; border-color: #34463c; }
+body.dark-mode .agendar-mascota h3 { color: #7be3a2; }
+body.dark-mode .agendar-campos .agendar-mascota input, body.dark-mode .agendar-mascota select { background: #1f2b24; }
+body.dark-mode .agendar-tiempo { color: #f5f0e8; }
+body.dark-mode .agendar-nota a { color: #7be3a2; }
+
+@media (max-width: 720px) {
+  .agendar-campos-3 { grid-template-columns: 1fr; }
+  .agendar-num { width: 50px; height: 50px; }
+}
+
+.agendar-reintentar {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 800;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}

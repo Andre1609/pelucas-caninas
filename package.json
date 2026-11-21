@@ -1,0 +1,36 @@
+{
+  "name": "pelucas-caninas",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "db:push": "drizzle-kit push",
+    "db:seed": "tsx src/db/semilla.ts",
+    "db:setup": "drizzle-kit push && tsx src/db/semilla.ts",
+    "test": "tsx --test src/lib/agenda.test.ts src/lib/auth.test.ts src/lib/ip.test.ts src/lib/mensajes.test.ts src/lib/slug.test.ts src/lib/productos.test.ts src/lib/reclamos.test.ts src/lib/imagen.test.ts src/db/url.test.ts",
+    "db:reset-citas": "tsx src/db/reset-citas.ts",
+    "admin:clave": "tsx scripts/crear-clave-admin.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.4",
+    "next": "^16.4.6",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "@electric-sql/pglite-socket": "^0.2.19",
+    "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "drizzle-kit": "^0.31.11",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "shampoo-bexter",
+    "nombre": "Shampoo bexter",
+    "categoria": "Shampoo",
+    "precio": 25.0,
+    "resumen": "Shampoo recomendado para perros mayores a 1 año con sensibilidad en la dermis.",
+    "descripcion": "Shampoo recomendado para perros mayores a 1 año con sensibilidad en la dermis. Su fórmula de acción intensiva, con PH neutro, es libre de fragancias, colorantes y parabenos y está basada en ingredientes naturales que calman las irritaciones, limpian, cuidan y protegen la delicada piel y el pelaje. .",
+    "imagen": "/img/bexter.jpg",
+    "orden": 0
+  },
+  {
+    "slug": "kit-aseo-augwind",
+    "nombre": "Augwind Kit de aseo para mascotas de 6 piezas",
+    "categoria": "Aseo",
+    "precio": 34.0,
+    "resumen": "Guantes de lavado para perros, cepillo de baño para perros.",
+    "descripcion": "Nuestro kit de aseo para mascotas de 6 piezas incluye 2 guantes de aseo para mascotas, 2 cepillos de lavado para perros y 2 cepillos de dientes para dedos de perros para satisfacer todas tus necesidades de cuidado de mascotas: baño, aseo, depilación, masaje y cuidado bucal. Elaborado con silicona suave y de primera calidad, es seguro y suave para perros, gatos, caballos y otras mascotas - Los mejores regalos para perros - Feliz Navidad",
+    "imagen": "/img/augwind.webp",
+    "orden": 1
+  },
+  {
+    "slug": "toallitas-immhabi",
+    "nombre": "IMMHABI 400 toallitas de perros para patas y trasero",
+    "categoria": "Aseo",
+    "precio": 52.0,
+    "resumen": "Hipoalergénicas, limpiadoras y desodorizantes.",
+    "descripcion": "toallitas para perros para patas y trasero, hipoalergénicas, limpiadoras y desodorizantes para las glándulas anales, toallitas higiénicas para cachorros, toallitas para la cara y el cuerpo",
+    "imagen": "/img/immhabi.jpg",
+    "orden": 2
+  },
+  {
+    "slug": "allrier-juguetes",
+    "nombre": "ALLRIER Juguetes para perros",
+    "categoria": "Juguete",
+    "precio": 41.0,
+    "resumen": "Juguetes interactivos para perros de tira y afloja.",
+    "descripcion": "Juguetes para perros para mantenerlos ocupados por aburrimiento, juguetes interactivos para perros de tira y afloja, juguetes estimulantes mentales para perros, rompecabezas de dentición.",
+    "imagen": "/img/allrier.jpg",
+    "orden": 3
+  },
+  {
+    "slug": "bolsas-greener",
+    "nombre": "Greener Walker Bolsas de basura para perros",
+    "categoria": "Higiene",
+    "precio": 58.0,
+    "resumen": "100% a prueba de fugas.",
+    "descripcion": "Mantén tus manos seguras: nuestras bolsas para excrementos son 100% a prueba de fugas y extra gruesas, nunca te preocupes por tus manos cuando recoges la caca. Paquete de gran valor: 36 rollos y 15 bolsas por rollo, un total de 540 bolsas pueden suministrar hasta 9 meses (2 bolsas por día).",
+    "imagen": "/img/greener.jpg",
+    "orden": 4
+  },
+  {
+    "slug": "arnes-beebiepet",
+    "nombre": "Beebiepet - Arnés táctico resistente para perros grandes",
+    "categoria": "Correas",
+    "precio": 99.0,
+    "resumen": "Resistente para perros grandes, ajustable, antitirones y reflectante.",
+    "descripcion": "Arnés resistente para perro: especialmente diseñado para perros potentes y robustos. El arnés de alta resistencia está hecho de nailon duradero, reforzado con costuras resistentes y equipado con dos anillos triangulares resistentes",
+    "imagen": "/img/beebiepet.jpg",
+    "orden": 5
+  },
+  {
+    "slug": "arnes-matilor",
+    "nombre": "Arnés para perro Matilor",
+    "categoria": "Correas",
+    "precio": 34.0,
+    "resumen": "Transpirable, diseño cómodo para todo tipo de mascota.",
+    "descripcion": "El arnés para perro Matilor está hecho de malla de aire duradera que cuenta con transpirable, ligera, cómoda y de secado rápido",
+    "imagen": "/img/matilor.jpg",
+    "orden": 6
+  },
+  {
+    "slug": "cepillo-comotech",
+    "nombre": "Comotech Cepillo de aseo",
+    "categoria": "Aseo",
+    "precio": 30.0,
+    "resumen": "Cepillo de champú y estropajo con mango ajustable.",
+    "descripcion": "Este juego de cepillos de ducha para perros contiene 3 cepillos de diferentes funciones, que pueden resolver eficazmente los problemas de baño, eliminación de pelo, masaje y aseo de tu mascota. Deja que tu mascota se enamore del baño y disfrute de la hora del baño. ¡Los mejores regalos de baño para mascotas!",
+    "imagen": "/img/comotech.jpg",
+    "orden": 7
+  },
+  {
+    "slug": "chomchom-roller",
+    "nombre": "ChomChom Roller Removedor de pelo de mascotas",
+    "categoria": "Aseo",
+    "precio": 85.0,
+    "resumen": "Rodillo reutilizable para retirar pelos de perros y gatos.",
+    "descripcion": "no más pelo en todas partes: el rodillo de pelo para mascotas, ahora disponible en negro, para una depilación eficaz de perros y gatos. Muy superior a los rodillos de pelusa tradicionales para pelo de mascotas o rodillos pegajosos, el ChomChom garantiza una limpieza profunda.",
+    "imagen": "/img/chomchom.jpg",
+    "orden": 8
+  },
+  {
+    "slug": "peine-pethroom",
+    "nombre": "PETHROOM | Peine profesional para ojos de mascotas",
+    "categoria": "Aseo",
+    "precio": 34.0,
+    "resumen": "Removedor de manchas de lágrimas para gatos y perros.",
+    "descripcion": "Removedor de manchas de lágrimas de acero inoxidable para gatos y perros | Herramienta de aseo de cabeza redonda suave | Compacto y portátil para mascotas",
+    "imagen": "/img/pethroom.jpg",
+    "orden": 9
+  },
+  {
+    "slug": "pelota-dissknic",
+    "nombre": "DISSKNIC Pelota chirriante indestructible",
+    "categoria": "Juguete",
+    "precio": 23.0,
+    "resumen": "Juguete interactivo para perros masticadores fuertes.",
+    "descripcion": "Juguetes chirriantes duraderos para perros: a algunos perros les gusta correr, saltar, ladrar y no pueden quedarse quietos en la cama del perro o en las almohadillas para cachorros. El juguete chirriante de pelota para perros puede despertar con éxito la curiosidad del perro y hacer todo lo posible para hacer que la pelota de perro suene.",
+    "imagen": "/img/dissknic.jpg",
+    "orden": 10
+  }
+]
