@@ -22,6 +22,7 @@ Proyecto de portafolio basado en un negocio real, realizado con autorización de
 ![Panel: citas próximas](docs/panel-citas.jpeg)
 ![Panel: citas canceladas](docs/panel-citas-canceladas.jpeg)
 ![Panel: productos](docs/panel-productosjpeg.jpeg)
+![Panel: reclamos](docs/panel-reclamaciones.jpeg)
 
 ## Stack
 
