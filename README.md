@@ -4,7 +4,7 @@ Aplicación web full stack para **Pelucas Caninas**, peluquería canina en San J
 
 **Demo en vivo:** https://pelucas-caninas.vercel.app
 
-Proyecto de portafolio basado en un negocio real, realizado con autorización del dueño. Evolucionó desde un sitio estático en HTML, CSS y JavaScript hasta una aplicación con base de datos, autenticación y despliegue automático.
+Proyecto de portafolio basado en un negocio real, realizado con autorización del dueño. Las reservas y reclamos enviados en la demo son de prueba.
 
 ## Capturas
 
@@ -26,9 +26,10 @@ Proyecto de portafolio basado en un negocio real, realizado con autorización de
 
 ## Stack
 
-- **Next.js** (App Router) + **React** + **TypeScript**
+- **Next.js 16** (App Router), **React 19** y **TypeScript**
 - **PostgreSQL** (Neon) con **Drizzle ORM**
 - **Zod** para validar los datos en el servidor
+- **Sharp** para optimizar las fotos que se suben
 - CSS propio, con modo oscuro y diseño responsive
 - **Vercel** para el despliegue, con publicación automática en cada `git push`
 
@@ -39,9 +40,9 @@ Proyecto de portafolio basado en un negocio real, realizado con autorización de
 - Catálogo con búsqueda en vivo y página de detalle por producto
 - Carrito persistente; el pedido sale por WhatsApp con el detalle y el total ya escritos
 - Servicios, galería con ampliación de imagen y carrusel de productos relacionados
-- Modo oscuro sin parpadeo al cargar
+- Modo oscuro sin parpadeo al cargar y portada adaptada a celulares
 - Aviso de cookies con *Aceptar todas*, *Solo necesarias* y configuración por categorías; el consentimiento queda guardado y se puede cambiar desde el pie de página
-- Libro de reclamaciones (formulario con validación)
+- Libro de reclamaciones: se guarda en la base de datos y entrega al cliente un número de registro
 - SEO: metadatos por página, datos estructurados (JSON-LD) en los productos y `robots.txt`
 
 ### Reserva de citas
@@ -58,7 +59,8 @@ Proyecto de portafolio basado en un negocio real, realizado con autorización de
 - Citas agrupadas por día, con filtros de próximas, pasadas y canceladas
 - Confirmar, cancelar y reabrir citas; al reabrir, verifica que el horario siga libre
 - Mensaje de confirmación para el cliente listo para enviar por WhatsApp
-- Editar nombre y precio de los productos, u ocultarlos de la tienda; los cambios se ven al instante
+- Libro de reclamaciones con contador de pendientes en el menú, respuesta interna, contacto por WhatsApp o correo y estado atendido o pendiente
+- Productos: editar nombre, precio, categoría y descripción, ocultarlos de la tienda, crear productos nuevos y subir o cambiar fotos; los cambios se ven al instante
 - Modo claro y oscuro propios
 
 ### Seguridad
@@ -68,21 +70,26 @@ Proyecto de portafolio basado en un negocio real, realizado con autorización de
 - Comprobación de sesión en cada página y en cada ruta de la API protegida
 - Verificación de origen en las peticiones que modifican datos
 - Bloqueo temporal tras 5 intentos fallidos de acceso
-- Máximo de 2 reservas cada 24 horas por número de celular y por IP; la IP solo se guarda como huella cifrada
+- Máximo de 2 reservas cada 24 horas por número de celular y por IP, y de 5 reclamos por IP; la IP solo se guarda como huella cifrada
 - Campo trampa contra bots y validación de todos los datos en el servidor
+- Las fotos subidas se validan por contenido real (solo JPG, PNG o WebP de menos de 4 MB) y se vuelven a codificar
 - `/admin` y `/api` fuera de los buscadores
 
-## Qué cambió respecto a la versión estática
+## Decisiones técnicas
 
-| Antes | Ahora |
-|---|---|
-| 11 archivos HTML casi idénticos, uno por producto | 1 página dinámica `/productos/[slug]` |
-| Navbar y footer copiados en cada archivo | Componentes reutilizables |
-| Precios y productos escritos a mano en el HTML | Tabla `productos` en PostgreSQL |
-| Pedidos y citas solo por mensaje de WhatsApp | Reservas guardadas en la base de datos, con panel de gestión |
-| Teléfono y correo escritos en el código | Variables de entorno |
-| Imágenes PNG de hasta 2,8 MB | WebP optimizado |
-| Sin SEO | Metadatos, JSON-LD y `robots.txt` |
+- **Reservas sin duplicados:** la reserva se verifica y se guarda dentro de una transacción de PostgreSQL con un candado por fecha, para que dos personas no tomen el mismo horario a la vez.
+- **Capacidad del salón:** cuando hay varios peluqueros, las mascotas de una reserva se reparten en paralelo, asignando siempre la más larga al peluquero con menos carga. La capacidad, los servicios y el horario se configuran en `src/lib/agenda.ts`.
+- **Autenticación propia y ligera:** un solo administrador, con contraseña cifrada con scrypt y cookie firmada, sin depender de librerías externas de sesión.
+- **Fotos en la base de datos:** las imágenes se reducen y se convierten a WebP con Sharp, y se guardan en PostgreSQL. Así no hace falta un servicio de almacenamiento aparte, y se sirven con caché de larga duración.
+- **Caché con actualización inmediata:** las páginas de productos se regeneran cada 60 segundos, y al instante cuando se edita algo desde el panel.
+- **Pruebas automáticas** de la lógica de negocio: horarios y capacidad, sesión y contraseñas, límites de reservas, validación de reclamos y productos, y procesamiento de imágenes.
+
+## Limitaciones conocidas
+
+- Salir del panel borra la cookie del navegador, pero no invalida la sesión en el servidor; vale hasta 8 horas.
+- El bloqueo por intentos fallidos de acceso se guarda en memoria, así que se reinicia con el servidor y no se comparte entre instancias.
+- El número de celular de las reservas no se verifica con un código.
+- El libro de reclamaciones no envía una copia por correo al cliente.
 
 ## Hoja de ruta
 
@@ -90,10 +97,9 @@ Proyecto de portafolio basado en un negocio real, realizado con autorización de
 - [x] Base de datos y catálogo dinámico
 - [x] Sistema de citas con horarios, capacidad y varias mascotas
 - [x] Panel de administración con login
+- [x] Libro de reclamaciones guardado y gestionado desde el panel
+- [x] Crear productos nuevos y subir fotos desde el panel
 - [x] Despliegue en producción (Vercel + Neon)
-- [ ] Guardar los reclamos del libro de reclamaciones en la base de datos
-- [ ] Crear productos nuevos y subir fotos desde el panel
-- [ ] Cerrar días o cambiar el número de peluqueros desde el panel
 - [ ] Dominio propio
 
 ## Ejecutar en local
@@ -121,7 +127,7 @@ En Windows, en lugar de `cp` puedes copiar el archivo `.env.example` y renombrar
 | `ADMIN_USER` | Usuario del panel de administración |
 | `ADMIN_PASSWORD_HASH` | Huella cifrada de la contraseña; se genera con `npm run admin:clave` |
 | `AUTH_SECRET` | Clave para firmar la sesión (mínimo 32 caracteres); la genera el mismo comando |
-| `LIMITE_RESERVAS` | Opcional. Con el valor `off` desactiva el límite de 2 reservas por día, útil solo para probar en local |
+| `LIMITE_RESERVAS` | Opcional. Con el valor `off` desactiva los límites de reservas y reclamos por día; útil solo para probar en local |
 
 ### Scripts
 
@@ -144,14 +150,6 @@ En Windows, en lugar de `cp` puedes copiar el archivo `.env.example` y renombrar
 
 No hay ningún enlace al panel en la web pública; se accede escribiendo la dirección `/admin`.
 
-## Pruebas
-
-```bash
-npm test
-```
-
-Las pruebas automáticas cubren los horarios y la capacidad del salón, la sesión firmada y las contraseñas, el límite de reservas por IP y celular, el formato del mensaje de confirmación y la validación de la cadena de conexión.
-
 ## Despliegue
 
 El proyecto se publica en **Vercel**, conectado a este repositorio: cada `git push` a la rama `main` genera un despliegue nuevo de forma automática. La base de datos está en **Neon**, y el archivo `vercel.json` fija la región de las funciones en São Paulo para que estén cerca de la base.
@@ -164,12 +162,19 @@ Variables necesarias en Vercel: las de la tabla anterior, excepto `LIMITE_RESERV
 src/
   app/            páginas y rutas: inicio, servicios, productos, nosotros, libro,
                   agendar, admin y API
-  components/     navbar, footer, carrito, cookies, formulario de citas, panel
+  components/     barra de navegación, carrito, formularios, cookies y panel
   db/             esquema, consultas, validación de la conexión y carga inicial
-  lib/            horarios, autenticación, límites, mensajes y utilidades
+  lib/            horarios, autenticación, límites, mensajes, imágenes y utilidades
   styles/         hojas de estilo
 scripts/          generador de credenciales del administrador
 data/             productos iniciales
 public/img/       imágenes optimizadas
+docs/             capturas de pantalla
 vercel.json       configuración de despliegue
 ```
+
+## Autor
+
+Desarrollado por **André**: [github.com/Andre1609](https://github.com/Andre1609)
+
+Los logotipos y fotos del negocio se usan con autorización del dueño. Las imágenes de productos de terceros pertenecen a sus respectivas marcas.
